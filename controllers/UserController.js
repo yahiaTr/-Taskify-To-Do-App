@@ -20,12 +20,10 @@ const EditUser = async (req, res) => {
         const { name, email, password, passwordC } = req.body;
         const updatedData = {};
 
-        // التحقق من وجود بيانات أساسية
         if (!name && !email && !password) {
             return res.status(400).json({ message: "At least one of name, email, or password is required" });
         }
 
-        // التحقق من تطابق كلمات المرور
         if (password !== passwordC) {
             return res.status(400).json({ passwordC: "Passwords do not match" });
         }
